@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     void Restart()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
   

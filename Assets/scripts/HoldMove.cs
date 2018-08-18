@@ -8,10 +8,6 @@ using EZCameraShake;
 public class HoldMove : MonoBehaviour
 {
 
-
-
-
-
     [SerializeField]
     float moveSpeed = 12f;
     //float chargedVelo = 0f;
@@ -19,8 +15,6 @@ public class HoldMove : MonoBehaviour
     float zero = 0f;
     float zeroPointFive = 0.51f;
    
-
-
 
     Rigidbody2D rb;
 
@@ -30,8 +24,6 @@ public class HoldMove : MonoBehaviour
     Touch touch;
     private Renderer rend;
 
-    //private float holdTime = 0.1f; 
-    //private float acumTime = 0.08f;
 
     Vector3 touchPosition, whereToMove;
     Vector3 start;
@@ -58,8 +50,6 @@ public class HoldMove : MonoBehaviour
 
 
     float previousDistanceToTouchPos, currentDistanceToTouchPos;
-
-
 
 
 
@@ -121,7 +111,7 @@ public class HoldMove : MonoBehaviour
                     
                 }
 
-                    if (holdingTime < 0.05f)
+                    if (holdingTime < 0.04f)
                     {
 
                     /* previousDistanceToTouchPos = zero;
@@ -138,13 +128,13 @@ public class HoldMove : MonoBehaviour
                 }
 
 
-                    if (holdingTime < 0.1f && (holdingTime > 0.055f))
+                    if (holdingTime < 0.05f && (holdingTime > 0.045f))
                     {
 
                     level1Move = true;
 
                     }
-                    if (holdingTime < 0.3f && (holdingTime > 0.1f))
+                    if (holdingTime < 0.3f && (holdingTime > 0.15f))
                     {
 
                     level2Move = true;
@@ -166,179 +156,21 @@ public class HoldMove : MonoBehaviour
                 }
             }
 
-            /*
-            if (Input.touchCount > 0 && midMove == "n")
-            {
-
-                touch = Input.GetTouch(0);
-
-
-                if (touch.phase == TouchPhase.Began)
-                {
-
-
-                    print("gege");
-                        StartCoroutine("StartCounting");
-
-
-
-                        //GameObject Hazards = GameObject.FindWithTag("hazard");
-                        //Hazards.GetComponent<AutoMove>().isAllowedToMove = false;
-                        //  isTouching = true;
-                        // print("gege");
-                        // StartCoroutine("StartCounting");
-
-
-
-
-
-
-
-
-                }
-
-
-             //    if (Input.GetTouch(0).phase == TouchPhase.Stationary && drag.isDragging == false)
-            //   {
-                    //FindObjectOfType<GameManager>().LevelHasEnded();
-             //       StartCoroutine("StartCounting");
-             //   }
-                 if (Input.GetTouch(0).phase == TouchPhase.Moved)
-                  {
-                      //print("moved");
-                    StopCoroutine("StartCounting");
-                      holdingTime = zero;
-
-
-                }
-
-                  if (Input.GetTouch(0).phase == TouchPhase.Ended)
-                  {
-
-                     // print("ended");
-                      StopCoroutine("StartCounting");
-                    if (holdingTime == zero)
-                    {
-                        return;
-                    }
-
-                    if (holdingTime < 0.5f)
-                       {
-
-                            previousDistanceToTouchPos = zero;
-                            currentDistanceToTouchPos = zero;
-                            isMoving = true;
-
-                            touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                            touchPosition.z = zero;
-                            whereToMove = (touchPosition - transform.position).normalized;
-                            rb.velocity = new Vector2(whereToMove.x * moveSpeed, whereToMove.y * moveSpeed);
-                            //print(moveSpeed); 
-
-
-
-
-                       } 
-
-
-                       if (holdingTime < 1f && (holdingTime > 0.55f))
-                       {
-                           previousDistanceToTouchPos = 0;
-                           currentDistanceToTouchPos = 0;
-                           isMoving = true;
-
-                           touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                           touchPosition.z = 0;
-                           whereToMove = (touchPosition - transform.position).normalized;
-                           //offset = touchPosition - transform.position;
-                           rb.velocity = new Vector2(whereToMove.x * 15, whereToMove.y * 15);
-                           print(10);
-
-                           //  GameObject enableMove = GameObject.FindWithTag("hazard");
-                           //  enableMove.GetComponent<AutoMove>().isAllowedToMove = false;
-                       }
-                       if (holdingTime < 3f && (holdingTime > 1f)) 
-                       {
-                           previousDistanceToTouchPos = 0;
-                           currentDistanceToTouchPos = 0;
-                           isMoving = true;
-
-                           touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                           touchPosition.z = 0;
-                           whereToMove = (touchPosition - transform.position).normalized;
-                           rb.velocity = new Vector2(whereToMove.x * 28, whereToMove.y * 28);
-
-                           print(28);
-
-                           // GameObject Hazards = GameObject.FindWithTag("hazard");
-                           // Hazards.GetComponent<AutoMove>().isAllowedToMove = false;
-                       }
-                       if (holdingTime > 3f && (holdingTime > 1.5f))
-                       {
-                           previousDistanceToTouchPos = 0;
-                           currentDistanceToTouchPos = 0;
-                           isMoving = true;
-
-                           touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                           touchPosition.z = 0;
-                           whereToMove = (touchPosition - transform.position).normalized;
-                           rb.velocity = new Vector2(whereToMove.x * 50, whereToMove.y * 50);
-                           print(50);
-
-                           //  GameObject Hazards = GameObject.FindWithTag("hazard");
-                           //  Hazards.GetComponent<AutoMove>().isAllowedToMove = false;
-
-                       }
-
-
-
-
-
-                   //print(rb.velocity);
-                   //print(velocity + "fgndsjkfnsdj");
-                   velocity = rb.velocity.magnitude;
-
-                  //((transform.position - previous).magnitude) / Time.deltaTime;
-                   previous = transform.position;
-                   midMove = "y";
-                    // isTouching = false;
-
-                    // print(midMove + "fdjsfndk");
-
-                    // GameObject enableMoves = GameObject.Find("Hazards");
-                    //enableMoves.GetComponent<AutoMove>().isAllowedToMove = false;
-                   // FindObjectOfType<GameManager>().TapRelease();
-                }
-
-
-           } 
-
-            */
-
             if (currentDistanceToTouchPos > previousDistanceToTouchPos)
             {
                 isMoving = false;
                 rb.velocity = Vector2.zero;
             
                 midMove = "n";
-            
-
 
             }
-   
-
-
 
 
         if (isMoving)
                 previousDistanceToTouchPos = (touchPosition - transform.position).magnitude;
 
-
-
-
         }
 
-    
 
     void FixedUpdate()
     {
@@ -389,11 +221,11 @@ public class HoldMove : MonoBehaviour
         for (holdingTime = 0f; holdingTime <= 4f; holdingTime += Time.deltaTime)
         {
             yield return new WaitForSeconds(Time.deltaTime);
-            if (holdingTime < 0.1f && (holdingTime > 0.055f))
+            if (holdingTime < 0.05f && (holdingTime > 0.045f))
             {
                 rend.material.color = Color.green;
             }
-            if (holdingTime < 0.3f && (holdingTime > 0.1f))
+            if (holdingTime < 0.3f && (holdingTime > 0.15f))
             {
                 rend.material.color = Color.blue;
             }
@@ -401,9 +233,6 @@ public class HoldMove : MonoBehaviour
             {
                 rend.material.color = Color.red;
             }
-
-            
-            
 
         }
        
@@ -420,9 +249,6 @@ public class HoldMove : MonoBehaviour
             slowTime();
         }
                 
-            
-            
-        
             
     }
 
@@ -467,7 +293,7 @@ public class HoldMove : MonoBehaviour
             
             rb.velocity = new Vector2(whereToMove.x  * 10, whereToMove.y * 10);
 
-            CameraShaker.Instance.ShakeOnce(4f, 1f, 0.1f, 1f);
+            CameraShaker.Instance.ShakeOnce(2f, 1f, 0.1f, 1f);
             Instantiate(TapChargeParticle, transform.position, Quaternion.identity);
             level1Move = false;
 
@@ -485,7 +311,7 @@ public class HoldMove : MonoBehaviour
             whereToMove = (touchPosition - transform.position).normalized;
             rb.velocity = new Vector2(whereToMove.x * 15, whereToMove.y * 15);
 
-            CameraShaker.Instance.ShakeOnce(4f, 1f, 0.1f, 1f);
+            CameraShaker.Instance.ShakeOnce(5f, 1f, 0.1f, 1f);
             Instantiate(TapChargeParticle, transform.position, Quaternion.identity);
             level2Move = false;
 
@@ -503,7 +329,7 @@ public class HoldMove : MonoBehaviour
             whereToMove = (touchPosition - transform.position).normalized;
             rb.velocity = new Vector2(whereToMove.x * 25, whereToMove.y * 25);
 
-            CameraShaker.Instance.ShakeOnce(4f, 1f, 0.1f, 1f);
+            CameraShaker.Instance.ShakeOnce(6f, 1f, 0.1f, 1f);
             Instantiate(TapChargeParticle, transform.position, Quaternion.identity);
             level3Move = false;
 
