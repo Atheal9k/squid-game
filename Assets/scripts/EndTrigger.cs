@@ -11,7 +11,8 @@ public class EndTrigger : MonoBehaviour {
         if (col.gameObject.name == ("Player"))
         {
             
-            gameManager.CompleteLevel();
+           // gameManager.CompleteLevel();
+            FindObjectOfType<GameManager>().CompleteLevel();
         }
         
     }

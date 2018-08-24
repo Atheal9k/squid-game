@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
         enableDrag.GetComponentInParent<Drag>().canDrag = false;
         GameObject enableHoldMove = GameObject.FindWithTag("player");
         enableHoldMove.GetComponentInParent<HoldMove>().enabled = false;
-        GameObject enableFinish = GameObject.Find("FinishLine");
-        enableFinish.GetComponentInParent<AutoMove>().isAllowedToMove = false;
+       // GameObject enableFinish = GameObject.FindWithTag("finishLine");
+      //  enableFinish.GetComponentInParent<AutoMove>().isAllowedToMove = false;
         Time.timeScale = 1f;
     }
 

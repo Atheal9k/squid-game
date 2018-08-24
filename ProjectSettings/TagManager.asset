@@ -11,6 +11,7 @@ TagManager:
   - tunnel1
   - tunnel2
   - harmless
+  - finishLine
   layers:
   - Default
   - TransparentFX

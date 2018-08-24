@@ -8,73 +8,16 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
-    /* public delegate void PlayerDelegate();
-     public static event PlayerDelegate OnPlayerDied;
-     public Vector3 startPos;
-     GameManager game;
-     Rigidbody2D rb;
 
-
-
-
-
-     void Start() {
-         rigidbody = GetComponent<Rigidbody2D>();
-         game = GameManager.Instance;
-         //GetComponent<Rigidbody>().simulated = false;
-
-     }
-
-
-     void Update() {
-         if (game.GameOver) return;
-
-
-
-     }
-
-
-
-
-     void OnTriggerEnter2D(Collider2D col)
-     {
-         if (col.gameObject.name == "Projectile")
-         {
-             //GetComponent<Rigidbody>().simulated = false;
-             OnPlayerDied();
-         }
-     }
-
-     void OnEnable()
-     {
-         GameManager.OnGameStarted += OnGameStarted;
-         GameManager.OnGameOverConfirmed += OnGameOverConfirmed;
-     }
-
-     void OnDisable()
-     {
-         GameManager.OnGameStarted -= OnGameStarted;
-         GameManager.OnGameOverConfirmed -= OnGameOverConfirmed;
-     }
-
-     void OnGameStarted()
-     {
-         //GetComponent<Rigidbody>().velocity = Vector3.zero;
-         // GetComponent<Rigidbody>().simulated = true;
-         print("Start");
-     }
-
-     void OnGameOverConfirmed()
-     {
-         transform.localPosition = startPos;
-         //transform.rotation = Quaternion.identity;
-     } */
-
+    public Transform endGoal;
 
     public string levelToLoad;
-   
+
+    public float speed;
 
     Rigidbody2D rb;
+
+    bool endGoalMove;
 
     void Start()
     {
@@ -82,7 +25,15 @@ public class Player : MonoBehaviour {
 
     }
 
-
+    void FixedUpdate()
+    {
+        if (endGoalMove == true)
+        {
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, endGoal.position, step);
+        }
+    }
+    
 
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -132,12 +83,23 @@ public class Player : MonoBehaviour {
             
         }
 
-        if (col.gameObject.name == "FinishLine")
+        if (col.gameObject.tag == "finishLine")
         {
+
+           // float step = speed * Time.deltaTime;
+            //transform.position = Vector3.MoveTowards(transform.position, endGoal.position, step);
             
             //USING endTrigger script attached 
             FindObjectOfType<GameManager>().CompleteLevel();
         }
+
+        if (col.gameObject.name == "trig")
+        {
+
+            endGoalMove = true;
+            
+        }
+
 
         else
         {
