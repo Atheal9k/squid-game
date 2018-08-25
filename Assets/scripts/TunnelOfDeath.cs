@@ -9,6 +9,8 @@ public class TunnelOfDeath : MonoBehaviour {
     private Transform currentPoint;
     public Transform[] points;
     public int pointSelection;
+    public float withdrawSpeed = 1f;
+    public float hitSpeed = 3f;
 
     void Start()
     {
@@ -40,15 +42,27 @@ public class TunnelOfDeath : MonoBehaviour {
 
         if (platform.transform.position == currentPoint.position)
         {
+            moveSpeed = hitSpeed;
             pointSelection++;
 
+            if (pointSelection == points.Length)
+            {
+                moveSpeed = withdrawSpeed;
+                pointSelection = 0;
+               
+            }
+
+           
+            currentPoint = points[pointSelection];
         }
 
-        if (pointSelection == points.Length)
+        if (pointSelection == 0)
         {
-            pointSelection = 0;
+
+            
         }
-        currentPoint = points[pointSelection];
+
+
 
     }
 

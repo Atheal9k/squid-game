@@ -12,6 +12,7 @@ TagManager:
   - tunnel2
   - harmless
   - finishLine
+  - phaseTrigger
   layers:
   - Default
   - TransparentFX
