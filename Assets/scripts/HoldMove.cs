@@ -124,22 +124,30 @@ public class HoldMove : MonoBehaviour
                      whereToMove = (touchPosition - transform.position).normalized;
                      rb.velocity = new Vector2(whereToMove.x * moveSpeed, whereToMove.y * moveSpeed); */
                     //print(moveSpeed); 
+                    print("kappa");
                     return;
                     
                 }
 
 
-                    if (holdingTime < 0.05f && (holdingTime > 0.045f))
-                    {
+                   // if (holdingTime < 0.05f && (holdingTime > 0.04f))
+                   // {
 
+                    //level1Move = true;
+                   // print("green");
+                 //   }
+
+                    if (holdingTime > 0.04f && (holdingTime < 0.15f))
+                {
                     level1Move = true;
-
-                    }
+                    
+                }
+                    
                     if (holdingTime < 0.3f && (holdingTime > 0.15f))
                     {
 
                     level2Move = true;
-
+                    print("blue");
                     }
                     if (holdingTime > 0.3f && (holdingTime > 0.15f))
                     {
@@ -222,7 +230,7 @@ public class HoldMove : MonoBehaviour
         for (holdingTime = 0f; holdingTime <= 4f; holdingTime += Time.deltaTime)
         {
             yield return new WaitForSeconds(Time.deltaTime);
-            if (holdingTime < 0.05f && (holdingTime > 0.045f))
+            if (holdingTime > 0.04f && (holdingTime < 0.15f))
             {
                 rend.material.color = Color.green;
             }

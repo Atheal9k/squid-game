@@ -11,9 +11,9 @@ public class Player : MonoBehaviour {
 
     public Transform endGoal;
 
-    public string levelToLoad;
+   
 
-    public float speed;
+    public float speed = 5;
 
     Rigidbody2D rb;
 
@@ -86,8 +86,8 @@ public class Player : MonoBehaviour {
         if (col.gameObject.tag == "finishLine")
         {
 
-           // float step = speed * Time.deltaTime;
-            //transform.position = Vector3.MoveTowards(transform.position, endGoal.position, step);
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, endGoal.position, step);
             
             //USING endTrigger script attached 
             FindObjectOfType<GameManager>().CompleteLevel();

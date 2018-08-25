@@ -2952,6 +2952,11 @@ Prefab:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1382023716}
+    - target: {fileID: 114786899276704208, guid: 7543c1b4a497eed40ae2f6675569556e,
+        type: 2}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7543c1b4a497eed40ae2f6675569556e, type: 2}
   m_IsPrefabAsset: 0
