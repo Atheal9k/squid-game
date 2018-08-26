@@ -14,6 +14,7 @@ public class ShootingEnemy : MonoBehaviour
         float fireRate;
         float nextFire;
     private Animator anim;
+    bool canSeePlayer = false;
     
     //public GameObject cannonFire;
     public Transform bulletOffset;
@@ -26,7 +27,7 @@ public class ShootingEnemy : MonoBehaviour
         void Start()
         {
         
-            fireRate = 4f;
+            fireRate = 8f;
             nextFire = Time.time;
         anim = GetComponent<Animator>();
         //target = GameObject.Find("bulletOffsets");
@@ -51,8 +52,11 @@ public class ShootingEnemy : MonoBehaviour
         if (Time.time > nextFire)
             {
             
-            Instantiate(projectile, bulletOffset.transform.position, Quaternion.identity);
+               
+                Instantiate(projectile, bulletOffset.transform.position, Quaternion.identity);
                 nextFire = Time.time + fireRate;
+            
+           
             }
         }
 
@@ -61,15 +65,17 @@ public class ShootingEnemy : MonoBehaviour
         Destroy(gameObject);
     }
 
+    void OnBecameVisible()
+    {
+        canSeePlayer = true;
+    }
+
     public void cannonFire()
     {
        // anim.PlayInFixedTime("cannonFire", -1, 10.0f);
     }
 
-    IEnumerator StartCounting()
-    {
-        yield return new WaitForSeconds(4);
-    }
+    
    
 
 }

@@ -13,6 +13,8 @@ TagManager:
   - harmless
   - finishLine
   - phaseTrigger
+  - endGoalMove
+  - shootingEnemy
   layers:
   - Default
   - TransparentFX
@@ -24,7 +26,7 @@ TagManager:
   - 
   - player
   - tunnel
-  - 
+  - shootingEnemy
   - 
   - 
   - 

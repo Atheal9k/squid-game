@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
 
 
-    public Transform endGoal;
+    //private Transform endGoal;
 
    
 
@@ -29,8 +29,9 @@ public class Player : MonoBehaviour {
     {
         if (endGoalMove == true)
         {
+             
             float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, endGoal.position, step);
+            transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("moveTo").transform.position, step);
         }
     }
     
@@ -86,8 +87,8 @@ public class Player : MonoBehaviour {
         if (col.gameObject.tag == "finishLine")
         {
 
-            float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, endGoal.position, step);
+            //float step = speed * Time.deltaTime;
+            //transform.position = Vector3.MoveTowards(transform.position, GameObject.FindGameObjectWithTag("moveTo").transform.position, step);
             
             //USING endTrigger script attached 
             FindObjectOfType<GameManager>().CompleteLevel();
