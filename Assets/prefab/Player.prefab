@@ -23,9 +23,9 @@ GameObject:
   - component: {fileID: 50044490701540800}
   - component: {fileID: 114639299771287094}
   - component: {fileID: 114075955463558320}
-  - component: {fileID: 114950190035553142}
   - component: {fileID: 114568262672703222}
   - component: {fileID: 61747225309244868}
+  - component: {fileID: 114950190035553142}
   m_Layer: 8
   m_Name: Player
   m_TagString: player
@@ -291,7 +291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d7deb2066970143b8e6c6c74e44872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endGoal: {fileID: 0}
   speed: 5
 --- !u!114 &114568262672703222
 MonoBehaviour:
