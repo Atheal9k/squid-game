@@ -19,45 +19,32 @@ public class PhasePrison : MonoBehaviour {
         
         collider = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
-        StartCoroutine("tagChange");
+        
     }
 
     IEnumerator tagChange()
     {
-        print("fefsefs");
-        
-            
-            if (canPhase == true)
+        if (canPhase == true)
+        {
+           if (gameObject.name == "bottonphaseBlock")
             {
-            print("true");
-            transform.gameObject.tag = "harmless";
-                anim.SetBool("harmless", true);
-                collider.enabled = false;
-                whichTag = true;
-
-
-
-
-                yield return new WaitForSeconds(startDelay);
-                if (whichTag == true)
-                {
-                    transform.gameObject.tag = "Untagged";
-                    anim.SetBool("harmless", false);
-                    collider.enabled = true;
-                    whichTag = false;
-                }
-
+                GameObject.Find("bottomphaseBlock").transform.gameObject.tag = "harmless";
+                anim.SetBool("harmless", false);
+                yield return new WaitForSeconds(1f);
+            }
             
-
         }
-
+       
+        
 
 
 
     }
 
-
-   
+   public void phase()
+    {
+        StartCoroutine("tagChange");
+    }
 
 
 }

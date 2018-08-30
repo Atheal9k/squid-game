@@ -454,6 +454,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameHasEnded: 0
   restartDelay: 1
+  currentSkinIndex: 0
+  currency: 0
+  skinAvailability: 1
   completeLevelUI: {fileID: 1439503471}
 --- !u!224 &1382023717
 RectTransform:
@@ -588,6 +591,10 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: changeMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772140663534990, guid: 35aab63b8431d6b4198c37e70f6c5e5c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35aab63b8431d6b4198c37e70f6c5e5c, type: 2}

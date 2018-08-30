@@ -104,7 +104,12 @@ public class Player : MonoBehaviour {
         if (col.gameObject.tag == "phaseTrigger")
         {
             //FindObjectOfType<PhasePrison>().canPhase = true;
-            FindObjectOfType<PhasePrison>().enabled = false;
+            //FindObjectOfType<PhasePrison>().enabled = false;
+            
+              
+            FindObjectOfType<PhasePrison>().canPhase = true;
+            FindObjectOfType<PhasePrison>().phase();
+
 
         }
 

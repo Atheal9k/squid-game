@@ -22,7 +22,8 @@ public class PauseMenu : MonoBehaviour {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         checkPauseMenu = true;
-        
+        FindObjectOfType<Drag>().canDrag = false;
+
         //GameIsPause = true;
     }
 
@@ -31,6 +32,7 @@ public class PauseMenu : MonoBehaviour {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         checkPauseMenu = false;
+        FindObjectOfType<Drag>().canDrag = true;
     }
 
 
